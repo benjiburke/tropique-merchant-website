@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tropiqué — Events</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --black:#0A0A0A;
+    --off-black:#111111;
+    --card-bg:#161616;
+    --border:#2A2A2A;
+    --gold:#C9A84C;
+    --gold-dim:#8A6E2E;
+    --white:#F0EDE8;
+    --muted:#6A6A6A;
+    --bebas:'Bebas Neue',sans-serif;
+    --inter:'Inter',sans-serif;
+  }
+  body{background:var(--black);color:var(--white);font-family:var(--inter);min-height:100vh;}
+
+  nav{background:var(--off-black);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:60px;position:relative;}
+  .nav-logo{font-family:var(--bebas);font-size:28px;letter-spacing:0.12em;color:var(--white);position:absolute;left:50%;transform:translateX(-50%);}
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--white);}
+  .nav-links a.active{color:var(--gold);}
+  .nav-icons{display:flex;gap:20px;color:var(--muted);font-size:20px;align-items:center;}
+  .nav-icons i{cursor:pointer;transition:color 0.2s;}
+  .nav-icons i:hover{color:var(--white);}
+
+  .page-header{padding:56px 40px 0;}
+  .page-eyebrow{font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .page-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--gold);}
+  .page-title{font-family:var(--bebas);font-size:72px;letter-spacing:0.03em;line-height:1;color:var(--white);}
+  .page-title span{color:var(--gold);}
+
+  .year-toggle{display:flex;align-items:center;margin:40px 40px 0;border-bottom:1px solid var(--border);}
+  .year-btn{font-family:var(--bebas);font-size:22px;letter-spacing:0.08em;padding:12px 28px 14px;cursor:pointer;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;}
+  .year-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+  .year-btn:hover{color:var(--white);}
+
+  .month-tabs{display:flex;padding:0 40px;border-bottom:1px solid var(--border);overflow-x:auto;}
+  .month-tabs::-webkit-scrollbar{height:0;}
+  .month-tab{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:16px 18px 14px;cursor:pointer;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all 0.2s;font-family:var(--inter);}
+  .month-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+  .month-tab:hover{color:var(--white);}
+
+  .events-list{padding:0 40px 80px;}
+  .month-count{font-size:10px;letter-spacing:0.12em;color:var(--muted);padding:24px 0 0;text-transform:uppercase;}
+
+  .event-row{border-bottom:1px solid var(--border);padding:28px 0;display:grid;grid-template-columns:140px 180px 1fr 160px;gap:24px;cursor:pointer;transition:background 0.15s;}
+  .event-row:hover{background:rgba(255,255,255,0.025);padding:28px 20px;margin:0 -20px;}
+
+  .event-date-day{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
+  .event-date-num{font-family:var(--bebas);font-size:40px;line-height:1;color:var(--white);}
+  .event-date-month{font-size:11px;color:var(--muted);letter-spacing:0.08em;margin-top:2px;}
+
+  .event-time-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;margin-top:4px;}
+  .event-time{font-family:var(--bebas);font-size:20px;letter-spacing:0.06em;color:var(--white);}
+  .event-hours{font-size:10px;color:var(--muted);letter-spacing:0.06em;margin-top:3px;}
+  .event-venue{font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:0.04em;line-height:1.6;}
+
+  .event-series{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px;margin-top:4px;}
+  .series-thu{color:#7EB8D4;}
+  .series-sat{color:var(--gold);}
+  .series-sun{color:#B48EAD;}
+  .series-special{color:#E07A5F;}
+
+  .event-name{font-family:var(--bebas);font-size:24px;letter-spacing:0.06em;color:var(--white);margin-bottom:8px;}
+  .event-lineup{font-size:11px;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;line-height:1.8;}
+  .event-lineup .hl{color:var(--white);font-weight:500;}
+
+  .event-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+  .event-tag{font-size:9px;letter-spacing:0.13em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:3px 9px;}
+  .event-tag.gold{border-color:var(--gold-dim);color:var(--gold);}
+
+  .event-cta{padding-top:6px;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+  .btn-tickets{display:inline-flex;align-items:center;gap:6px;padding:11px 18px;background:var(--gold);color:var(--black);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;border:none;font-family:var(--inter);font-weight:500;white-space:nowrap;transition:background 0.2s;}
+  .btn-tickets:hover{background:#E0BC5A;}
+  .btn-rsvp{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:transparent;color:var(--muted);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;border:1px solid var(--border);font-family:var(--inter);white-space:nowrap;transition:all 0.2s;}
+  .btn-rsvp:hover{border-color:var(--white);color:var(--white);}
+  .event-recurring{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-align:right;}
+
+  .no-events{padding:80px 0;text-align:center;}
+  .no-events-title{font-family:var(--bebas);font-size:32px;color:var(--muted);letter-spacing:0.08em;margin-bottom:8px;}
+  .no-events-sub{font-size:12px;color:var(--muted);}
+
+  @media(max-width:768px){
+    nav{padding:0 20px;}
+    .nav-links{display:none;}
+    .page-header{padding:40px 20px 0;}
+    .page-title{font-size:48px;}
+    .year-toggle{margin:28px 20px 0;}
+    .month-tabs{padding:0 20px;}
+    .events-list{padding:0 20px 60px;}
+    .event-row{grid-template-columns:1fr;gap:12px;}
+    .event-cta{align-items:flex-start;flex-direction:row;flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="#">Shop</a></li>
+    <li><a href="#" class="active">Events</a></li>
+    <li><a href="#">Book Us</a></li>
+  </ul>
+  <div class="nav-logo">TROPI<span>QUÉ</span></div>
+  <div class="nav-icons">
+    <i class="ti ti-search" aria-label="Search"></i>
+    <i class="ti ti-shopping-bag" aria-label="Cart"></i>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-eyebrow">Stamford, CT & Beyond</div>
+  <div class="page-title">EVENTS & <span>SHOWS</span></div>
+</div>
+
+<div class="year-toggle">
+  <button class="year-btn active" onclick="setYear(2025,this)">2025</button>
+  <button class="year-btn" onclick="setYear(2026,this)">2026</button>
+</div>
+
+<div class="month-tabs" id="month-tabs"></div>
+<div class="events-list" id="events-list"></div>
+
+<script>
+  const VENUE = "T's Restaurant & Bar\nStamford, CT";
+
+  const RESIDENCIES = {
+    4: { name:"THURSDAY SESSIONS", series:"Thursday Sessions", seriesClass:"series-thu", time:"9:00 PM", hours:"9 PM — 1 AM", tags:["Free Entry","21+"], goldTag:"Free Entry", tickets:false, rsvp:true },
+    6: { name:"NÓMADA JUNGLE",      series:"Nómada Jungle",    seriesClass:"series-sat", time:"10:00 PM", hours:"10 PM — 2 AM", tags:["Free Entry","21+"], goldTag:"Free Entry", tickets:false, rsvp:true },
+    0: { name:"SUNDAY SERVICE",     series:"Sunday Service",   seriesClass:"series-sun", time:"9:00 PM",  hours:"9 PM — 1 AM",  tags:["Free Entry","21+"], goldTag:"Free Entry", tickets:false, rsvp:true },
+  };
+
+  const specialEvents = {
+    '2025-7-4':   { name:"INDEPENDENCE NIGHT",  series:"Special Event", seriesClass:"series-special", time:"10:00 PM", hours:"10 PM — 2 AM", tags:["Free Entry","21+"], goldTag:"Free Entry", tickets:false, rsvp:true },
+    '2025-10-31': { name:"HALLOWEEN JUNGLE",    series:"Nómada Jungle — Special", seriesClass:"series-sat", time:"10:00 PM", hours:"10 PM — 3 AM", tags:["Free Entry","21+","Costumes"], goldTag:"Free Entry", tickets:false, rsvp:true },
+    '2025-12-27': { name:"NYE COUNTDOWN",       series:"Special Event", seriesClass:"series-special", time:"9:00 PM",  hours:"9 PM — 3 AM",  tags:["Free Entry","21+"], goldTag:"Free Entry", tickets:false, rsvp:true },
+  };
+
+  const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const SHORT_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  function generateEvents(year) {
+    const byMonth = {};
+    for(let m=0;m<12;m++) byMonth[m]=[];
+    for(let d=new Date(year,0,1); d.getFullYear()===year; d.setDate(d.getDate()+1)){
+      const dow = d.getDay();
+      if(!(dow in RESIDENCIES)) continue;
+      const key = `${year}-${d.getMonth()+1}-${d.getDate()}`;
+      const special = specialEvents[key];
+      const base = RESIDENCIES[dow];
+      const ev = special ? {...base, ...special, isSpecial:true} : {...base, isSpecial:false};
+      byMonth[d.getMonth()].push({
+        day: DAY_NAMES[dow],
+        date: d.getDate(),
+        month: SHORT_MONTHS[d.getMonth()],
+        venue: VENUE,
+        ...ev
+      });
+    }
+    return byMonth;
+  }
+
+  let currentYear = 2025;
+  let currentMonth = new Date().getMonth();
+  const allEvents = { 2025: generateEvents(2025), 2026: generateEvents(2026) };
+
+  function setYear(y, btn) {
+    currentYear = y;
+    document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentMonth = 0;
+    renderMonths();
+    renderEvents();
+  }
+
+  function setMonth(m) {
+    currentMonth = m;
+    renderMonths();
+    renderEvents();
+  }
+
+  function renderMonths() {
+    const tabs = document.getElementById('month-tabs');
+    tabs.innerHTML = '';
+    for(let m=0;m<12;m++){
+      const btn = document.createElement('button');
+      btn.className = 'month-tab' + (m===currentMonth?' active':'');
+      btn.textContent = MONTH_NAMES[m].toUpperCase();
+      btn.onclick = (mm => () => setMonth(mm))(m);
+      tabs.appendChild(btn);
+    }
+  }
+
+  function renderEvents() {
+    const list = document.getElementById('events-list');
+    const evs = allEvents[currentYear][currentMonth] || [];
+    if(!evs.length){
+      list.innerHTML = '<div class="no-events"><div class="no-events-title">No Events This Month</div><div class="no-events-sub">More dates dropping soon.</div></div>';
+      return;
+    }
+    const countLine = `<div class="month-count">${evs.length} event${evs.length!==1?'s':''} — ${MONTH_NAMES[currentMonth]} ${currentYear}</div>`;
+    list.innerHTML = countLine + evs.map(e => `
+      <div class="event-row">
+        <div>
+          <div class="event-date-day">${e.day}</div>
+          <div class="event-date-num">${e.date}</div>
+          <div class="event-date-month">${e.month} ${currentYear}</div>
+        </div>
+        <div>
+          <div class="event-time-label">Doors</div>
+          <div class="event-time">${e.time}</div>
+          <div class="event-hours">${e.hours}</div>
+          <div class="event-venue">${e.venue.replace('\n','<br>')}</div>
+        </div>
+        <div>
+          <div class="event-series ${e.seriesClass}">${e.series}</div>
+          <div class="event-name">${e.name}</div>
+          <div class="event-lineup"><span class="hl">DJ Robidio</span> &nbsp;—&nbsp; Guest DJ TBA</div>
+          <div class="event-tags">${e.tags.map(t=>`<div class="event-tag${t===e.goldTag?' gold':''}">${t}</div>`).join('')}</div>
+        </div>
+        <div class="event-cta">
+          ${e.tickets ? `<button class="btn-tickets">Tickets <i class="ti ti-arrow-up-right"></i></button>` : ''}
+          ${e.rsvp ? `<button class="btn-rsvp">RSVP</button>` : ''}
+          ${!e.isSpecial ? `<div class="event-recurring">Weekly Residency</div>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  renderMonths();
+  renderEvents();
+</script>
+</body>
+</html>
