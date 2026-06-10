@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tropiqué — Shop</title>
+<title>Tropiqué — World Cup Jersey Collection</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -18,125 +18,92 @@
 }
 body{background:var(--black);color:var(--white);font-family:Arial,Helvetica,sans-serif;min-height:100vh;}
 
+/* ANNOUNCE */
+.announce{background:var(--gold);color:#000;text-align:center;padding:8px 16px;font-size:10px;letter-spacing:0.18em;font-weight:700;text-transform:uppercase;}
+
 /* NAV */
-.announce{background:var(--gold);color:#000;text-align:center;padding:8px;font-size:10px;letter-spacing:0.18em;font-weight:700;text-transform:uppercase;}
 nav{background:var(--off);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:58px;position:relative;}
-.nav-logo{font-family:Impact,Arial,sans-serif;font-size:26px;letter-spacing:0.12em;color:var(--white);position:absolute;left:50%;transform:translateX(-50%);}
+.nav-logo{font-family:Impact,Arial,sans-serif;font-size:26px;letter-spacing:0.12em;color:var(--white);position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;}
 .nav-logo span{color:var(--gold);}
-.nav-links{display:flex;gap:28px;list-style:none;}
-.nav-links a{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;}
-.nav-links a:hover,.nav-links a.active{color:var(--white);}
-.nav-icons{display:flex;gap:18px;align-items:center;}
-.nav-icons a{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;}
-.nav-icons a:hover{color:var(--white);}
+.nav-left{display:flex;gap:28px;list-style:none;}
+.nav-left a{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+.nav-left a:hover,.nav-left a.active{color:var(--white);}
+.nav-right{display:flex;gap:18px;align-items:center;}
+.nav-right a{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+.nav-right a:hover{color:var(--white);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--off);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:Impact,Arial,sans-serif;font-size:32px;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);text-decoration:none;}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-menu-close{position:absolute;top:20px;right:24px;font-size:28px;cursor:pointer;color:var(--white);}
 
 /* HERO */
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:540px;}
-.hero-img{background:#141414;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.hero-img-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;padding:40px;}
-.jersey{position:relative;width:220px;height:280px;margin:0 auto;}
-.j-sleeve-l{width:56px;height:92px;background:#1E1E1E;border:1px solid #2E2E2E;position:absolute;top:42px;left:-44px;transform:rotate(-10deg);clip-path:polygon(0% 0%,100% 0%,90% 100%,10% 100%);}
-.j-sleeve-r{width:56px;height:92px;background:#1E1E1E;border:1px solid #2E2E2E;position:absolute;top:42px;right:-44px;transform:rotate(10deg);clip-path:polygon(0% 0%,100% 0%,90% 100%,10% 100%);}
-.j-body{width:200px;height:220px;background:#1E1E1E;border:1px solid #2E2E2E;position:absolute;top:42px;left:10px;clip-path:polygon(15% 0%,85% 0%,100% 12%,100% 100%,0% 100%,0% 12%);}
-.j-stripe{position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gold);opacity:0.7;}
-.j-number{position:absolute;top:50%;left:50%;transform:translate(-50%,-38%);font-family:Impact,Arial,sans-serif;font-size:72px;color:var(--gold);opacity:0.12;line-height:1;letter-spacing:0.04em;}
-.j-brand{position:absolute;top:28%;left:50%;transform:translate(-50%,-50%);font-family:Impact,Arial,sans-serif;font-size:12px;letter-spacing:0.22em;color:var(--gold);opacity:0.75;}
-.j-collar{width:60px;height:32px;background:#161616;border:1px solid #2E2E2E;border-radius:0 0 30px 30px;position:absolute;top:0;left:50%;transform:translateX(-50%);}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:520px;}
+.hero-img{background:#0D0D0D;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+.hero-img img{width:100%;height:100%;object-fit:cover;}
 .hero-text{display:flex;flex-direction:column;justify-content:center;padding:60px 48px;background:var(--black);}
 .hero-eyebrow{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
 .hero-eyebrow::before{content:'';display:block;width:22px;height:1px;background:var(--gold);}
-.hero-title{font-family:Impact,Arial,sans-serif;font-size:82px;line-height:0.92;color:var(--white);margin-bottom:8px;letter-spacing:0.02em;}
-.hero-title-sub{font-size:16px;color:var(--gold);margin-bottom:26px;letter-spacing:0.12em;font-style:italic;}
-.hero-desc{font-size:13px;line-height:1.9;color:var(--muted);max-width:300px;margin-bottom:36px;font-weight:300;}
+.hero-title{font-family:Impact,Arial,sans-serif;font-size:72px;line-height:0.92;color:var(--white);margin-bottom:8px;letter-spacing:0.02em;}
+.hero-title-sub{font-size:15px;color:var(--gold);margin-bottom:24px;letter-spacing:0.14em;font-style:italic;}
+.hero-desc{font-size:13px;line-height:1.9;color:var(--muted);max-width:300px;margin-bottom:32px;}
 .btn-gold{display:inline-block;padding:13px 32px;background:var(--gold);color:#000;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border:none;font-family:Arial,sans-serif;font-weight:700;text-decoration:none;}
 .btn-outline{display:inline-block;padding:12px 32px;background:transparent;color:var(--white);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border:1px solid var(--border);font-family:Arial,sans-serif;text-decoration:none;margin-left:10px;}
 
 /* MARQUEE */
 .marquee-wrap{overflow:hidden;background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px 0;}
-.marquee{display:flex;gap:44px;width:max-content;animation:ticker 22s linear infinite;}
+.marquee{display:flex;gap:44px;width:max-content;animation:ticker 24s linear infinite;}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .marquee span{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
 .marquee .dot{color:var(--gold);}
 
-/* SECTIONS */
-.section{padding:60px 32px;}
-.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;}
-.section-title{font-family:Impact,Arial,sans-serif;font-size:38px;letter-spacing:0.04em;color:var(--white);}
+/* SECTION */
+.section{padding:56px 32px;}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;}
+.section-title{font-family:Impact,Arial,sans-serif;font-size:36px;letter-spacing:0.04em;color:var(--white);}
 .section-title span{color:var(--gold);}
-.section-link{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;}
+.section-sub{font-size:11px;color:var(--muted);letter-spacing:0.08em;margin-top:4px;}
+
+/* FILTER TABS */
+.filter-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:32px;}
+.ftab{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;padding:12px 20px 10px;cursor:pointer;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:Arial,sans-serif;transition:all 0.2s;}
+.ftab.on{color:var(--gold);border-bottom-color:var(--gold);}
+.ftab:hover{color:var(--white);}
 
 /* PRODUCT GRID */
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
-.pgrid.two{grid-template-columns:repeat(2,1fr);}
-.pcard{background:var(--card);cursor:pointer;}
-.pcard.wide{grid-column:span 2;}
-.pimg{width:100%;aspect-ratio:3/4;background:var(--off);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.pcard.wide .pimg{aspect-ratio:16/9;}
-.pimg-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;}
-.pbadge{position:absolute;top:14px;left:14px;background:var(--gold);color:#000;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 9px;font-weight:700;}
-.pinfo{padding:14px 18px 18px;}
-.pname{font-size:13px;color:var(--white);margin-bottom:6px;letter-spacing:0.04em;}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+.pcard{background:var(--card);cursor:pointer;transition:background 0.2s;}
+.pcard:hover{background:#1C1C1C;}
+.pimg{width:100%;aspect-ratio:1/1;background:#0D0D0D;overflow:hidden;position:relative;}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
+.pcard:hover .pimg img{transform:scale(1.04);}
+.pbadge{position:absolute;top:12px;left:12px;background:var(--gold);color:#000;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 9px;font-weight:700;}
+.pwbadge{position:absolute;top:12px;left:12px;background:#B48EAD;color:#000;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;padding:3px 9px;font-weight:700;}
+.pcountry{position:absolute;bottom:10px;right:10px;font-size:18px;}
+.pinfo{padding:12px 16px 16px;}
+.pname{font-size:12px;color:var(--white);margin-bottom:4px;letter-spacing:0.04em;text-transform:uppercase;}
 .pmeta{display:flex;justify-content:space-between;align-items:center;margin-top:6px;}
-.pprice{font-size:13px;color:var(--gold);}
-.ptag{font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:var(--muted);}
-.pcolors{display:flex;gap:5px;}
-.pcolor{width:11px;height:11px;border-radius:50%;border:1px solid rgba(255,255,255,0.12);}
-
-/* CLOTHING ILLUSTRATIONS */
-.tee{position:relative;width:100px;height:122px;}
-.tee-sl{width:26px;height:44px;background:#222;border:1px solid #333;position:absolute;top:18px;left:-14px;transform:rotate(-8deg);clip-path:polygon(0% 0%,100% 0%,85% 100%,15% 100%);}
-.tee-sr{width:26px;height:44px;background:#222;border:1px solid #333;position:absolute;top:18px;right:-14px;transform:rotate(8deg);clip-path:polygon(0% 0%,100% 0%,85% 100%,15% 100%);}
-.tee-body{width:86px;height:100px;background:#222;border:1px solid #333;position:absolute;top:18px;left:7px;clip-path:polygon(12% 0%,88% 0%,100% 10%,100% 100%,0% 100%,0% 10%);}
-.tee-collar{width:28px;height:15px;background:#1A1A1A;border:1px solid #2A2A2A;border-radius:0 0 18px 18px;position:absolute;top:0;left:50%;transform:translateX(-50%);}
-.tee-text{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);font-family:Impact,Arial,sans-serif;font-size:16px;color:var(--gold);opacity:0.65;letter-spacing:0.1em;white-space:nowrap;}
-.hoodie{position:relative;width:110px;height:134px;}
-.h-hood{width:48px;height:26px;background:#1D1D1D;border:1px solid #333;border-radius:50% 50% 0 0;position:absolute;top:-6px;left:50%;transform:translateX(-50%);}
-.h-sl{width:26px;height:46px;background:#1D1D1D;border:1px solid #333;position:absolute;top:20px;left:-12px;transform:rotate(-8deg);clip-path:polygon(0% 0%,100% 0%,85% 100%,15% 100%);}
-.h-sr{width:26px;height:46px;background:#1D1D1D;border:1px solid #333;position:absolute;top:20px;right:-12px;transform:rotate(8deg);clip-path:polygon(0% 0%,100% 0%,85% 100%,15% 100%);}
-.h-body{width:90px;height:110px;background:#1D1D1D;border:1px solid #333;position:absolute;top:14px;left:10px;clip-path:polygon(10% 0%,90% 0%,100% 8%,100% 100%,0% 100%,0% 8%);}
-.h-pocket{width:46px;height:18px;background:#222;border:1px solid #2A2A2A;border-radius:0 0 6px 6px;position:absolute;bottom:22px;left:50%;transform:translateX(-50%);}
-.hat{position:relative;width:100px;height:78px;}
-.hat-crown{width:68px;height:58px;background:#1E1E1E;border:1px solid #333;border-radius:6px 6px 0 0;position:absolute;bottom:14px;left:50%;transform:translateX(-50%);}
-.hat-brim{width:96px;height:14px;background:#222;border:1px solid #333;border-radius:0 0 40% 40%;position:absolute;bottom:0;left:50%;transform:translateX(-50%);}
-.hat-logo{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:Impact,Arial,sans-serif;font-size:10px;color:var(--gold);opacity:0.75;letter-spacing:0.1em;}
-
-/* CATEGORY STRIP */
-.cat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
-.cat-card{background:var(--card);padding:28px 20px;cursor:pointer;border-bottom:2px solid transparent;}
-.cat-card:hover{background:#1C1C1C;border-bottom-color:var(--gold);}
-.cat-icon{font-size:20px;color:var(--muted);margin-bottom:10px;}
-.cat-name{font-family:Impact,Arial,sans-serif;font-size:17px;letter-spacing:0.06em;color:var(--white);margin-bottom:4px;}
-.cat-count{font-size:10px;letter-spacing:0.11em;color:var(--muted);text-transform:uppercase;}
+.pprice{font-size:12px;color:var(--gold);}
+.ptag{font-size:9px;letter-spacing:0.11em;text-transform:uppercase;color:var(--muted);}
+.hidden{display:none;}
 
 /* EDITORIAL */
 .editorial{display:grid;grid-template-columns:1fr 1fr;background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.ed-img{background:#141414;min-height:380px;display:flex;align-items:center;justify-content:center;}
-.ed-img-inner{display:flex;flex-direction:column;align-items:center;gap:18px;}
-.stage-rig{width:170px;height:7px;background:#2A2A2A;border:1px solid #333;border-radius:2px;}
-.stage-lights{display:flex;gap:28px;align-items:flex-start;padding-top:16px;}
-.sl{width:2px;background:var(--gold);opacity:0.25;}
-.sl:nth-child(1){height:140px;transform:rotate(-14deg);transform-origin:top;}
-.sl:nth-child(2){height:180px;}
-.sl:nth-child(3){height:155px;transform:rotate(8deg);transform-origin:top;}
-.sl:nth-child(4){height:140px;transform:rotate(14deg);transform-origin:top;}
+.ed-img{background:#0D0D0D;min-height:360px;overflow:hidden;}
+.ed-img img{width:100%;height:100%;object-fit:cover;}
 .ed-text{display:flex;flex-direction:column;justify-content:center;padding:56px 48px;}
-.ed-tag{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
-.ed-title{font-family:Impact,Arial,sans-serif;font-size:48px;line-height:0.95;color:var(--white);margin-bottom:18px;letter-spacing:0.02em;}
+.ed-tag{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.ed-title{font-family:Impact,Arial,sans-serif;font-size:46px;line-height:0.95;color:var(--white);margin-bottom:16px;letter-spacing:0.02em;}
 .ed-title em{color:var(--gold);font-style:normal;}
 .ed-body{font-size:13px;line-height:1.9;color:var(--muted);max-width:340px;margin-bottom:32px;}
 
-/* INSTAGRAM */
-.insta-header{display:flex;justify-content:space-between;align-items:center;padding:40px 32px 16px;}
-.insta-title{font-family:Impact,Arial,sans-serif;font-size:26px;letter-spacing:0.04em;color:var(--white);}
-.insta-title span{color:var(--gold);}
-.insta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
-.insta-cell{aspect-ratio:1;background:var(--card);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;}
-.insta-placeholder{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#2A2A2A;text-align:center;}
-.insta-cell-label{position:absolute;bottom:10px;left:10px;font-size:9px;letter-spacing:0.11em;text-transform:uppercase;color:var(--muted);}
-
 /* NEWSLETTER */
-.newsletter{background:var(--black);border-top:1px solid var(--border);padding:64px 32px;text-align:center;}
-.nl-title{font-family:Impact,Arial,sans-serif;font-size:44px;color:var(--white);letter-spacing:0.04em;margin-bottom:8px;}
+.newsletter{background:var(--black);border-top:1px solid var(--border);padding:56px 32px;text-align:center;}
+.nl-title{font-family:Impact,Arial,sans-serif;font-size:40px;color:var(--white);letter-spacing:0.04em;margin-bottom:8px;}
 .nl-sub{font-size:13px;color:var(--muted);margin-bottom:28px;}
 .nl-form{display:flex;max-width:400px;margin:0 auto;}
 .nl-input{flex:1;background:#161616;border:1px solid var(--border);border-right:none;color:var(--white);padding:13px 18px;font-size:12px;font-family:Arial,sans-serif;outline:none;}
@@ -146,10 +113,10 @@ nav{background:var(--off);border-bottom:1px solid var(--border);padding:0 32px;d
 /* FOOTER */
 footer{background:var(--off);border-top:1px solid var(--border);padding:48px 32px 28px;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
-.footer-logo{font-family:Impact,Arial,sans-serif;font-size:26px;letter-spacing:0.1em;color:var(--white);margin-bottom:6px;}
+.footer-logo{font-family:Impact,Arial,sans-serif;font-size:24px;letter-spacing:0.1em;color:var(--white);margin-bottom:6px;}
 .footer-logo span{color:var(--gold);}
-.footer-tagline{font-size:11px;color:var(--muted);font-style:italic;margin-bottom:12px;letter-spacing:0.06em;}
-.footer-desc{font-size:12px;color:var(--muted);line-height:1.8;max-width:230px;}
+.footer-tagline{font-size:11px;color:var(--muted);font-style:italic;margin-bottom:12px;}
+.footer-desc{font-size:12px;color:var(--muted);line-height:1.8;max-width:220px;}
 .footer-col h4{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--white);margin-bottom:14px;}
 .footer-col ul{list-style:none;}
 .footer-col li{margin-bottom:9px;}
@@ -161,67 +128,72 @@ footer{background:var(--off);border-top:1px solid var(--border);padding:48px 32p
 .footer-socials a{font-size:11px;letter-spacing:0.11em;text-transform:uppercase;color:var(--muted);text-decoration:none;}
 .footer-socials a:hover{color:var(--gold);}
 
+/* RESPONSIVE */
 @media(max-width:768px){
+  .nav-left,.nav-right{display:none;}
+  .hamburger{display:flex;}
+  nav{justify-content:space-between;}
+  .nav-logo{position:static;transform:none;}
   .hero{grid-template-columns:1fr;}
-  .hero-img{min-height:320px;}
-  .hero-text{padding:40px 24px;}
-  .hero-title{font-size:56px;}
-  nav{padding:0 20px;}
-  .nav-links{display:none;}
+  .hero-img{min-height:300px;}
+  .hero-text{padding:36px 24px;}
+  .hero-title{font-size:52px;}
   .pgrid{grid-template-columns:repeat(2,1fr);}
-  .pcard.wide{grid-column:span 2;}
-  .cat-strip{grid-template-columns:repeat(2,1fr);}
   .editorial{grid-template-columns:1fr;}
-  .ed-img{min-height:220px;}
-  .insta-grid{grid-template-columns:repeat(2,1fr);}
+  .ed-img{min-height:240px;}
+  .ed-text{padding:36px 24px;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   .section{padding:40px 20px;}
-  .insta-header{padding:32px 20px 12px;}
+  .filter-tabs{overflow-x:auto;}
+  .ftab{white-space:nowrap;}
+}
+@media(max-width:480px){
+  .pgrid{grid-template-columns:repeat(2,1fr);}
+  .hero-title{font-size:42px;}
 }
 </style>
 </head>
 <body>
 
-<div class="announce">LIMITED DROP &#8212; JERSEY COLLECTION VOL. 1 &#8212; FREE SHIPPING ON ORDERS $75+</div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-close" onclick="closeMobileMenu()">&#10005;</div>
+  <a href="#" onclick="closeMobileMenu()">Shop</a>
+  <a href="tropique_events.html" onclick="closeMobileMenu()">Events</a>
+  <a href="#" onclick="closeMobileMenu()">About</a>
+  <a href="#" onclick="closeMobileMenu()" style="color:var(--gold);">Book Us</a>
+</div>
+
+<div class="announce">WORLD CUP COLLECTION &#8212; LIMITED EDITION &#8212; FREE SHIPPING ON ORDERS $75+</div>
 
 <nav>
-  <ul class="nav-links">
+  <ul class="nav-left">
     <li><a href="#" class="active">Shop</a></li>
     <li><a href="tropique_events.html">Events</a></li>
     <li><a href="#">About</a></li>
   </ul>
   <div class="nav-logo">TROPI<span>QU&#201;</span></div>
-  <div class="nav-icons">
-    <a href="#">Search</a>
-    <a href="#">Wishlist</a>
+  <div class="nav-right">
     <a href="#">Cart (0)</a>
+  </div>
+  <div class="hamburger" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-img">
-    <div class="hero-img-inner">
-      <div class="jersey">
-        <div class="j-sleeve-l"></div>
-        <div class="j-sleeve-r"></div>
-        <div class="j-body">
-          <div class="j-stripe"></div>
-          <div class="j-number">10</div>
-          <div class="j-brand">TROPIQU&#201;</div>
-        </div>
-        <div class="j-collar"></div>
-      </div>
-    </div>
+    <img src="jersey_pics/brazil_.png" alt="Tropique World Cup Jersey">
   </div>
   <div class="hero-text">
-    <div class="hero-eyebrow">Vol. 1 &#8212; Limited Edition</div>
-    <div class="hero-title">THE<br>JERSEY</div>
-    <div class="hero-title-sub">collection</div>
-    <p class="hero-desc">Wear the night. Crafted for those who move through the world with intention &#8212; from the event floor to the street.</p>
+    <div class="hero-eyebrow">Limited Edition Drop</div>
+    <div class="hero-title">WORLD<br>CUP</div>
+    <div class="hero-title-sub">jersey collection</div>
+    <p class="hero-desc">Represent your roots. 18 countries, two silhouettes — the classic men's fit and the women's crop. Designed by Tropi&#x0171;&#x00e9;, built for the night.</p>
     <div>
-      <a href="#" class="btn-gold">Shop Now</a>
-      <a href="#" class="btn-outline">View Lookbook</a>
+      <a href="#shop" class="btn-gold">Shop Now</a>
+      <a href="tropique_events.html" class="btn-outline">See Events</a>
     </div>
   </div>
 </section>
@@ -229,166 +201,201 @@ footer{background:var(--off);border-top:1px solid var(--border);padding:48px 32p
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee">
-    <span>New Drop</span><span class="dot"> &#8212; </span>
-    <span>Jersey Vol. 1</span><span class="dot"> &#8212; </span>
-    <span>Limited Quantities</span><span class="dot"> &#8212; </span>
+    <span>World Cup Collection</span><span class="dot"> &#8212; </span>
+    <span>18 Countries</span><span class="dot"> &#8212; </span>
+    <span>Men's &amp; Women's</span><span class="dot"> &#8212; </span>
+    <span>Limited Edition</span><span class="dot"> &#8212; </span>
     <span>Free Shipping $75+</span><span class="dot"> &#8212; </span>
     <span>Tropi&#x0171;&#x00e9; Stamford CT</span><span class="dot"> &#8212; </span>
-    <span>New Drop</span><span class="dot"> &#8212; </span>
-    <span>Jersey Vol. 1</span><span class="dot"> &#8212; </span>
-    <span>Limited Quantities</span><span class="dot"> &#8212; </span>
+    <span>World Cup Collection</span><span class="dot"> &#8212; </span>
+    <span>18 Countries</span><span class="dot"> &#8212; </span>
+    <span>Men's &amp; Women's</span><span class="dot"> &#8212; </span>
+    <span>Limited Edition</span><span class="dot"> &#8212; </span>
     <span>Free Shipping $75+</span><span class="dot"> &#8212; </span>
     <span>Tropi&#x0171;&#x00e9; Stamford CT</span><span class="dot"> &#8212; </span>
   </div>
 </div>
 
-<!-- PRODUCTS -->
-<section class="section" style="padding-bottom:0;">
+<!-- SHOP -->
+<section class="section" id="shop">
   <div class="section-header">
-    <div class="section-title">NEW <span>DROPS</span></div>
-    <a href="#" class="section-link">View All</a>
+    <div>
+      <div class="section-title">THE <span>COLLECTION</span></div>
+      <div class="section-sub">18 countries &mdash; Men's &amp; Women's</div>
+    </div>
   </div>
-  <div class="pgrid">
-    <div class="pcard wide">
-      <div class="pimg">
-        <div class="pimg-inner">
-          <div class="jersey" style="transform:scale(1.3);margin-top:10px;">
-            <div class="j-sleeve-l"></div><div class="j-sleeve-r"></div>
-            <div class="j-body"><div class="j-stripe"></div><div class="j-number">01</div><div class="j-brand">TROPIQU&#201;</div></div>
-            <div class="j-collar"></div>
-          </div>
-        </div>
-        <div class="pbadge">Drop 01</div>
-      </div>
-      <div class="pinfo">
-        <div class="pname">Tropi&#x0171;&#x00e9; Pro Jersey &#8212; Black/Gold</div>
-        <div class="pmeta">
-          <div class="pprice">$85.00</div>
-          <div class="pcolors">
-            <div class="pcolor" style="background:#111;"></div>
-            <div class="pcolor" style="background:#C9A84C;"></div>
-            <div class="pcolor" style="background:#2A3A2A;"></div>
-          </div>
-        </div>
-      </div>
+
+  <div class="filter-tabs">
+    <button class="ftab on" onclick="filterProducts('all',this)">All</button>
+    <button class="ftab" onclick="filterProducts('mens',this)">Men's</button>
+    <button class="ftab" onclick="filterProducts('womens',this)">Women's Crop</button>
+  </div>
+
+  <div class="pgrid" id="pgrid">
+
+    <!-- MENS -->
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/argentina_.png" alt="Argentina"><div class="pbadge">Men's</div><div class="pcountry">🇦🇷</div></div>
+      <div class="pinfo"><div class="pname">Argentina</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
     </div>
-    <div class="pcard">
-      <div class="pimg">
-        <div class="pimg-inner">
-          <div class="tee">
-            <div class="tee-sl"></div><div class="tee-sr"></div>
-            <div class="tee-body"><div class="tee-text">TRQ</div></div>
-            <div class="tee-collar"></div>
-          </div>
-        </div>
-      </div>
-      <div class="pinfo">
-        <div class="pname">Logo Tee &#8212; Washed Black</div>
-        <div class="pmeta"><div class="pprice">$45.00</div><div class="ptag">Apparel</div></div>
-      </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/bolivia_.png" alt="Bolivia"><div class="pbadge">Men's</div><div class="pcountry">🇧🇴</div></div>
+      <div class="pinfo"><div class="pname">Bolivia</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
     </div>
-    <div class="pcard">
-      <div class="pimg">
-        <div class="pimg-inner">
-          <div class="hoodie">
-            <div class="h-hood"></div><div class="h-sl"></div><div class="h-sr"></div>
-            <div class="h-body"></div><div class="h-pocket"></div>
-          </div>
-        </div>
-        <div class="pbadge">New</div>
-      </div>
-      <div class="pinfo">
-        <div class="pname">Tropi&#x0171;&#x00e9; Hoodie &#8212; Charcoal</div>
-        <div class="pmeta"><div class="pprice">$95.00</div><div class="ptag">Apparel</div></div>
-      </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/brazil_.png" alt="Brazil"><div class="pbadge">Men's</div><div class="pcountry">🇧🇷</div></div>
+      <div class="pinfo"><div class="pname">Brazil</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
     </div>
-    <div class="pcard">
-      <div class="pimg">
-        <div class="pimg-inner">
-          <div class="tee">
-            <div class="tee-sl"></div><div class="tee-sr"></div>
-            <div class="tee-body" style="background:#1A1A2A;"><div class="tee-text" style="font-size:11px;">NIGHT</div></div>
-            <div class="tee-collar"></div>
-          </div>
-        </div>
-      </div>
-      <div class="pinfo">
-        <div class="pname">Night Shift Tee &#8212; Navy</div>
-        <div class="pmeta"><div class="pprice">$45.00</div><div class="ptag">Apparel</div></div>
-      </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/chile_.png" alt="Chile"><div class="pbadge">Men's</div><div class="pcountry">🇨🇱</div></div>
+      <div class="pinfo"><div class="pname">Chile</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
     </div>
-    <div class="pcard">
-      <div class="pimg">
-        <div class="pimg-inner">
-          <div class="hat">
-            <div class="hat-crown"></div>
-            <div class="hat-brim"></div>
-            <div class="hat-logo">TRQ</div>
-          </div>
-        </div>
-      </div>
-      <div class="pinfo">
-        <div class="pname">Fitted Cap &#8212; Black</div>
-        <div class="pmeta"><div class="pprice">$38.00</div><div class="ptag">Accessories</div></div>
-      </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/colombia_.png" alt="Colombia"><div class="pbadge">Men's</div><div class="pcountry">🇨🇴</div></div>
+      <div class="pinfo"><div class="pname">Colombia</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
     </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/DR_.png" alt="Dominican Republic"><div class="pbadge">Men's</div><div class="pcountry">🇩🇴</div></div>
+      <div class="pinfo"><div class="pname">Dominican Republic</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/equador.png" alt="Ecuador"><div class="pbadge">Men's</div><div class="pcountry">🇪🇨</div></div>
+      <div class="pinfo"><div class="pname">Ecuador</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/germany_.png" alt="Germany"><div class="pbadge">Men's</div><div class="pcountry">🇩🇪</div></div>
+      <div class="pinfo"><div class="pname">Germany</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/guatemala_.png" alt="Guatemala"><div class="pbadge">Men's</div><div class="pcountry">🇬🇹</div></div>
+      <div class="pinfo"><div class="pname">Guatemala</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/hounduras_.png" alt="Honduras"><div class="pbadge">Men's</div><div class="pcountry">🇭🇳</div></div>
+      <div class="pinfo"><div class="pname">Honduras</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/india_.png" alt="India"><div class="pbadge">Men's</div><div class="pcountry">🇮🇳</div></div>
+      <div class="pinfo"><div class="pname">India</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/italy_.png" alt="Italy"><div class="pbadge">Men's</div><div class="pcountry">🇮🇹</div></div>
+      <div class="pinfo"><div class="pname">Italy</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/mexico.png" alt="Mexico"><div class="pbadge">Men's</div><div class="pcountry">🇲🇽</div></div>
+      <div class="pinfo"><div class="pname">Mexico</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/mexico2.png" alt="Mexico Alt"><div class="pbadge">Men's</div><div class="pcountry">🇲🇽</div></div>
+      <div class="pinfo"><div class="pname">Mexico (Alt)</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/peru-2.png" alt="Peru"><div class="pbadge">Men's</div><div class="pcountry">🇵🇪</div></div>
+      <div class="pinfo"><div class="pname">Peru</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/portugal-slide-.png" alt="Portugal"><div class="pbadge">Men's</div><div class="pcountry">🇵🇹</div></div>
+      <div class="pinfo"><div class="pname">Portugal</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/PR_.jpeg" alt="Puerto Rico"><div class="pbadge">Men's</div><div class="pcountry">🇵🇷</div></div>
+      <div class="pinfo"><div class="pname">Puerto Rico</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/salvador_.png" alt="El Salvador"><div class="pbadge">Men's</div><div class="pcountry">🇸🇻</div></div>
+      <div class="pinfo"><div class="pname">El Salvador</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="mens">
+      <div class="pimg"><img src="jersey_pics/US_.png" alt="USA"><div class="pbadge">Men's</div><div class="pcountry">🇺🇸</div></div>
+      <div class="pinfo"><div class="pname">USA</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Classic Fit</div></div></div>
+    </div>
+
+    <!-- WOMENS -->
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/argentina_white.png" alt="Argentina Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇦🇷</div></div>
+      <div class="pinfo"><div class="pname">Argentina</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/bolivia_yellow.png" alt="Bolivia Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇧🇴</div></div>
+      <div class="pinfo"><div class="pname">Bolivia</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/brazil_black.png" alt="Brazil Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇧🇷</div></div>
+      <div class="pinfo"><div class="pname">Brazil</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/colombia_yellow.png" alt="Colombia Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇨🇴</div></div>
+      <div class="pinfo"><div class="pname">Colombia</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/DR_black.png" alt="Dominican Republic Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇩🇴</div></div>
+      <div class="pinfo"><div class="pname">Dominican Republic</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/equa-yellow.png" alt="Ecuador Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇪🇨</div></div>
+      <div class="pinfo"><div class="pname">Ecuador</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/germany_yellow.png" alt="Germany Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇩🇪</div></div>
+      <div class="pinfo"><div class="pname">Germany</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/guatemala-white.png" alt="Guatemala Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇬🇹</div></div>
+      <div class="pinfo"><div class="pname">Guatemala</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/haiti_white.png" alt="Haiti Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇭🇹</div></div>
+      <div class="pinfo"><div class="pname">Haiti</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/honduras_white.png" alt="Honduras Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇭🇳</div></div>
+      <div class="pinfo"><div class="pname">Honduras</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/india_white.png" alt="India Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇮🇳</div></div>
+      <div class="pinfo"><div class="pname">India</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/mexico_black.png" alt="Mexico Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇲🇽</div></div>
+      <div class="pinfo"><div class="pname">Mexico</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/portugal-black.png" alt="Portugal Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇵🇹</div></div>
+      <div class="pinfo"><div class="pname">Portugal</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/pr_white.png" alt="Puerto Rico Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇵🇷</div></div>
+      <div class="pinfo"><div class="pname">Puerto Rico</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/salva_white.png" alt="El Salvador Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇸🇻</div></div>
+      <div class="pinfo"><div class="pname">El Salvador</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/us_black.png" alt="USA Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇺🇸</div></div>
+      <div class="pinfo"><div class="pname">USA</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+    <div class="pcard" data-cat="womens">
+      <div class="pimg"><img src="jersey_pics/peru_white.png" alt="Peru Women's"><div class="pwbadge">Women's</div><div class="pcountry">🇵🇪</div></div>
+      <div class="pinfo"><div class="pname">Peru</div><div class="pmeta"><div class="pprice">$65.00</div><div class="ptag">Crop Fit</div></div></div>
+    </div>
+
   </div>
 </section>
-
-<!-- CATEGORIES -->
-<div class="cat-strip" style="margin-top:1px;">
-  <div class="cat-card">
-    <div class="cat-icon">&#9651;</div>
-    <div class="cat-name">Jerseys</div>
-    <div class="cat-count">4 styles</div>
-  </div>
-  <div class="cat-card">
-    <div class="cat-icon">&#9671;</div>
-    <div class="cat-name">Apparel</div>
-    <div class="cat-count">12 styles</div>
-  </div>
-  <div class="cat-card">
-    <div class="cat-icon">&#9670;</div>
-    <div class="cat-name">Accessories</div>
-    <div class="cat-count">8 styles</div>
-  </div>
-  <div class="cat-card">
-    <div class="cat-icon">&#9733;</div>
-    <div class="cat-name">Limited Drops</div>
-    <div class="cat-count">2 active</div>
-  </div>
-</div>
 
 <!-- EDITORIAL -->
 <section class="editorial">
   <div class="ed-img">
-    <div class="ed-img-inner">
-      <div class="stage-rig"></div>
-      <div class="stage-lights">
-        <div class="sl"></div><div class="sl"></div><div class="sl"></div><div class="sl"></div>
-      </div>
-      <div style="font-family:Impact,Arial,sans-serif;font-size:10px;letter-spacing:0.28em;color:#222;margin-top:36px;">TROPIQU&#201; EVENTS</div>
-    </div>
+    <img src="jersey_pics/bolivia_.png" alt="Tropique">
   </div>
   <div class="ed-text">
     <div class="ed-tag">&#8212; The Brand</div>
     <div class="ed-title">BUILT FOR<br>THE <em>NIGHT</em></div>
-    <p class="ed-body">Tropi&#x0171;&#x00e9; isn&#39;t just a brand &#8212; it&#39;s the energy in the room. Born in Stamford, designed for every floor, every city, every moment that matters. Wear it like you mean it.</p>
+    <p class="ed-body">Tropi&#x0171;&#x00e9; isn&#39;t just a brand &#8212; it&#39;s the energy in the room. Born in Stamford, designed for every floor, every city, every moment that matters.</p>
     <a href="tropique_events.html" class="btn-gold" style="width:fit-content;">See Events</a>
   </div>
 </section>
-
-<!-- INSTAGRAM -->
-<div class="insta-header">
-  <div class="insta-title">@TROPIQUE <span>ON INSTAGRAM</span></div>
-  <a href="#" class="section-link">Follow Us</a>
-</div>
-<div class="insta-grid">
-  <div class="insta-cell"><div class="insta-placeholder">Event Night</div></div>
-  <div class="insta-cell"><div class="insta-placeholder">Drop Promo</div></div>
-  <div class="insta-cell"><div class="insta-placeholder">Behind the Set</div></div>
-  <div class="insta-cell"><div class="insta-placeholder">Jersey Fit</div></div>
-</div>
 
 <!-- NEWSLETTER -->
 <div class="newsletter">
@@ -411,11 +418,9 @@ footer{background:var(--off);border-top:1px solid var(--border);padding:48px 32p
     <div class="footer-col">
       <h4>Shop</h4>
       <ul>
-        <li><a href="#">New Drops</a></li>
-        <li><a href="#">Jerseys</a></li>
-        <li><a href="#">Apparel</a></li>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Sale</a></li>
+        <li><a href="#shop">All Jerseys</a></li>
+        <li><a href="#" onclick="filterProducts('mens',null);return false;">Men's</a></li>
+        <li><a href="#" onclick="filterProducts('womens',null);return false;">Women's Crop</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -431,9 +436,9 @@ footer{background:var(--off);border-top:1px solid var(--border);padding:48px 32p
       <h4>Events</h4>
       <ul>
         <li><a href="tropique_events.html">Upcoming</a></li>
-        <li><a href="#">Past Events</a></li>
         <li><a href="#">Book Tropi&#x0171;&#x00e9;</a></li>
         <li><a href="#">Instagram</a></li>
+        <li><a href="#">TikTok</a></li>
       </ul>
     </div>
   </div>
@@ -447,5 +452,29 @@ footer{background:var(--off);border-top:1px solid var(--border);padding:48px 32p
   </div>
 </footer>
 
+<script>
+function openMobileMenu(){document.getElementById('mobileMenu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow='';}
+
+function filterProducts(cat, btn){
+  var cards = document.querySelectorAll('.pcard');
+  cards.forEach(function(c){
+    if(cat==='all' || c.getAttribute('data-cat')===cat){
+      c.style.display='block';
+    } else {
+      c.style.display='none';
+    }
+  });
+  if(btn){
+    document.querySelectorAll('.ftab').forEach(function(t){t.classList.remove('on');});
+    btn.classList.add('on');
+  } else {
+    document.querySelectorAll('.ftab').forEach(function(t){
+      t.classList.toggle('on', t.textContent.toLowerCase().includes(cat));
+    });
+  }
+  document.getElementById('shop').scrollIntoView({behavior:'smooth'});
+}
+</script>
 </body>
 </html>
