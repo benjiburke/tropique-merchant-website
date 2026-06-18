@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book DJ Robidio — Tropiqué</title>
+</head>
+<body>
+<style>
+#tropique-booking {
+  min-height: 100vh;
+  background: #0A0A0A;
+  color: #F0EDE8;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.tbk-hero {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.tbk-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tbk-eyebrow::before,
+.tbk-eyebrow::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: #C9A84C;
+}
+
+.tbk-title {
+  font-family: Impact, Arial, sans-serif;
+  font-size: clamp(48px, 10vw, 80px);
+  line-height: 0.92;
+  color: #F0EDE8;
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+
+.tbk-title span {
+  color: #C9A84C;
+}
+
+.tbk-sub {
+  font-size: 13px;
+  color: #6A6A6A;
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.tbk-card {
+  background: #161616;
+  border: 1px solid #2A2A2A;
+  padding: 48px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.tbk-row {
+  margin-bottom: 24px;
+}
+
+.tbk-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  margin-bottom: 8px;
+}
+
+.tbk-input,
+.tbk-select,
+.tbk-textarea {
+  width: 100%;
+  background: #0A0A0A;
+  border: 1px solid #2A2A2A;
+  color: #F0EDE8;
+  padding: 14px 16px;
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
+  transition: border-color 0.3s;
+  appearance: none;
+}
+
+.tbk-input:focus,
+.tbk-select:focus,
+.tbk-textarea:focus {
+  border-color: #C9A84C;
+}
+
+.tbk-input::placeholder,
+.tbk-textarea::placeholder {
+  color: #6A6A6A;
+}
+
+.tbk-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+
+.tbk-select option {
+  background: #161616;
+  color: #F0EDE8;
+}
+
+.tbk-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.tbk-row-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tbk-btn {
+  width: 100%;
+  background: #C9A84C;
+  color: #000;
+  border: none;
+  padding: 16px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  margin-top: 8px;
+}
+
+.tbk-btn:hover { opacity: 0.85; }
+.tbk-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.tbk-divider {
+  border: none;
+  border-top: 1px solid #2A2A2A;
+  margin: 32px 0;
+}
+
+.tbk-note {
+  font-size: 10px;
+  color: #6A6A6A;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.7;
+}
+
+.tbk-success {
+  display: none;
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.tbk-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 24px;
+  box-shadow: 0 0 30px rgba(201,168,76,0.2);
+  color: #C9A84C;
+}
+
+.tbk-success-title {
+  font-family: Impact, Arial, sans-serif;
+  font-size: 40px;
+  letter-spacing: 0.06em;
+  color: #C9A84C;
+  margin-bottom: 12px;
+}
+
+.tbk-success-sub {
+  font-size: 14px;
+  color: #F0EDE8;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+
+.tbk-error {
+  display: none;
+  background: rgba(211,47,47,0.1);
+  border: 1px solid rgba(211,47,47,0.3);
+  color: #ff6b6b;
+  padding: 12px 16px;
+  font-size: 12px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .tbk-card { padding: 32px 24px; }
+  .tbk-row-split { grid-template-columns: 1fr; }
+}
+</style>
+
+<div id="tropique-booking">
+  <div class="tbk-hero">
+    <div class="tbk-eyebrow">Tropiqué Entertainment</div>
+    <div class="tbk-title">BOOK<br><span>ROBIDIO</span></div>
+    <p class="tbk-sub">Ready to elevate your event? Fill out the form below and we'll get back to you within 24 hours.</p>
+  </div>
+
+  <div class="tbk-card">
+    <div id="tbk-form">
+      <div class="tbk-error" id="tbk-error">Please fill in all required fields.</div>
+
+      <div class="tbk-row-split">
+        <div>
+          <label class="tbk-label">Full Name *</label>
+          <input class="tbk-input" type="text" id="tbk-name" placeholder="Your name">
+        </div>
+        <div>
+          <label class="tbk-label">Email *</label>
+          <input class="tbk-input" type="email" id="tbk-email" placeholder="your@email.com">
+        </div>
+      </div>
+
+      <div class="tbk-row">
+        <label class="tbk-label">Event Type *</label>
+        <select class="tbk-select" id="tbk-type">
+          <option value="" disabled selected>Select event type</option>
+          <option value="Wedding">Wedding</option>
+          <option value="Birthday Party">Birthday Party</option>
+          <option value="Corporate Event">Corporate Event</option>
+          <option value="Private Party">Private Party</option>
+          <option value="Club / Nightlife">Club / Nightlife</option>
+          <option value="Quinceañera">Quinceañera</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="tbk-row-split">
+        <div>
+          <label class="tbk-label">Event Date *</label>
+          <input class="tbk-input" type="date" id="tbk-date">
+        </div>
+        <div>
+          <label class="tbk-label">Event Time</label>
+          <input class="tbk-input" type="time" id="tbk-time">
+        </div>
+      </div>
+
+      <div class="tbk-row">
+        <label class="tbk-label">Additional Notes</label>
+        <textarea class="tbk-textarea" id="tbk-notes" placeholder="Tell us about your event — venue, vibe, music preferences, anything else we should know..."></textarea>
+      </div>
+
+      <hr class="tbk-divider">
+
+      <button class="tbk-btn" id="tbk-submit" onclick="tbkSubmit()">Submit Booking Request →</button>
+      <p class="tbk-note">We'll respond within 24 hours to confirm availability and discuss details.<br>For urgent inquiries, DM us on Instagram <a href="https://instagram.com/tropique.us" target="_blank" style="color:#C9A84C;">@tropique.us</a></p>
+    </div>
+
+    <div class="tbk-success" id="tbk-success">
+      <div class="tbk-success-icon">✦</div>
+      <div class="tbk-success-title">REQUEST SENT</div>
+      <p class="tbk-success-sub">We got your booking request!<br>Robidio will be in touch within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){ emailjs.init("bbDYd4Y09Qdd0QUMF"); })();
+
+const _sbk = supabase.createClient(
+  'https://ozgrxtrqkpggxfqgziya.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96Z3J4dHJxa3BnZ3hmcWd6aXlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2ODE1NjAsImV4cCI6MjA5MzI1NzU2MH0.SnMuR_rnsrD6GagpvT9124Z0Dse45qR8Zj_BwowaT2U'
+);
+
+async function tbkSubmit() {
+  const name    = document.getElementById('tbk-name').value.trim();
+  const email   = document.getElementById('tbk-email').value.trim();
+  const type    = document.getElementById('tbk-type').value;
+  const date    = document.getElementById('tbk-date').value;
+  const time    = document.getElementById('tbk-time').value;
+  const notes   = document.getElementById('tbk-notes').value.trim();
+  const btn     = document.getElementById('tbk-submit');
+  const errBox  = document.getElementById('tbk-error');
+
+  errBox.style.display = 'none';
+
+  if (!name || !email || !type || !date) {
+    errBox.style.display = 'block';
+    errBox.textContent = 'Please fill in all required fields.';
+    return;
+  }
+
+  if (!email.includes('@')) {
+    errBox.style.display = 'block';
+    errBox.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    await _sbk.from('dj_bookings').insert([{
+      name,
+      email,
+      event_type: type,
+      event_date: date,
+      event_time: time || null,
+      notes: notes || null,
+      submitted_at: new Date().toISOString()
+    }]);
+
+    await emailjs.send("service_1pjnfmh", "template_cavu87u", {
+      to_email: "robidio@tropique.co",
+      email: email,
+      name: name,
+      event_type: type,
+      event_date: date,
+      event_time: time || 'Not specified',
+      notes: notes || 'None'
+    });
+
+    document.getElementById('tbk-form').style.display = 'none';
+    document.getElementById('tbk-success').style.display = 'block';
+
+  } catch(err) {
+    console.error(err);
+    btn.disabled = false;
+    btn.textContent = 'Submit Booking Request →';
+    errBox.style.display = 'block';
+    errBox.textContent = 'Something went wrong. Please try again.';
+  }
+}
+</script>
+</body>
+</html>
