@@ -327,7 +327,7 @@ async function tbkSubmit() {
   btn.textContent = 'Sending...';
 
   try {
-    await _sbk.from('dj_bookings').insert([{
+    await _sbk.from('bookings').insert([{
       name,
       email,
       event_type: type,
