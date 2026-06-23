@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rent Equipment — Tropiqué</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0A0A0A;
+  --off: #111111;
+  --card: #161616;
+  --border: #2A2A2A;
+  --gold: #C9A84C;
+  --white: #F0EDE8;
+  --muted: #6A6A6A;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 24px 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: Impact, Arial, sans-serif;
+  font-size: clamp(52px, 12vw, 100px);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.hero-title span { color: var(--gold); }
+
+.hero-sub {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.9;
+}
+
+.hero-note {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+}
+
+/* GRID */
+.grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+/* EQUIPMENT CARD */
+.eq-card {
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+}
+
+.eq-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #0D0D0D;
+}
+
+.eq-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.eq-card:hover .eq-img img {
+  transform: scale(1.03);
+}
+
+.eq-body {
+  padding: 28px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.eq-tag {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.eq-name {
+  font-family: Impact, Arial, sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+
+.eq-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.eq-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #000;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 13px 28px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: opacity 0.3s;
+  width: fit-content;
+}
+
+.eq-btn:hover { opacity: 0.85; }
+
+/* BOTTOM CTA */
+.cta {
+  background: var(--off);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.cta-title {
+  font-family: Impact, Arial, sans-serif;
+  font-size: 40px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.cta-title span { color: var(--gold); }
+
+.cta-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.8;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #000;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 14px 36px;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.cta-btn:hover { opacity: 0.85; }
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .eq-body { padding: 20px 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Tropiqué Audio</div>
+  <div class="hero-title">RENT <span>EQUIPMENT</span></div>
+  <p class="hero-sub">Elevate your event with professional-grade audio equipment. From club nights to weddings — we have the sound system to make it unforgettable.</p>
+  <span class="hero-note">All systems come in pairs of two</span>
+</div>
+
+<!-- EQUIPMENT GRID -->
+<div class="grid">
+
+  <div class="eq-card">
+    <div class="eq-img">
+      <img src="https://tropique.co/cdn/shop/files/IMG-2071.png?v=1708717744&width=1500" alt="RCF SUB 8003-AS II">
+    </div>
+    <div class="eq-body">
+      <span class="eq-tag">Active Subwoofer</span>
+      <div class="eq-name">RCF SUB 8003-AS II</div>
+      <p class="eq-desc">The latest generation of RCF woofer technology, digital amplifiers and DSP processing with higher power and enhanced performance. Perfect blend of bass reproduction, high SPL and compact dimensions for mobile use by bands and DJs.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfU7no8XDeUKD41x9ty1MTz6EXd02nxTzD7KwY7d7yQnFyQ7w/viewform?usp=sf_link" target="_blank" class="eq-btn">Book This System →</a>
+    </div>
+  </div>
+
+  <div class="eq-card">
+    <div class="eq-img">
+      <img src="https://tropique.co/cdn/shop/files/IMG-2069.png?v=1708717601&width=1500" alt="RCF EVOX JMIX 8">
+    </div>
+    <div class="eq-body">
+      <span class="eq-tag">Active Line Array + Mixer</span>
+      <div class="eq-name">RCF EVOX JMIX 8</div>
+      <p class="eq-desc">An 8-input Digital Mixer with Z.CORE DSP for full mix functions, instrument FX and AMP simulations. iOS/Android-compatible app, Bluetooth audio and Hi-Z instrument input. Combines RCF quality with a powerful 8-channel digital mixer.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfU7no8XDeUKD41x9ty1MTz6EXd02nxTzD7KwY7d7yQnFyQ7w/viewform?usp=sf_link" target="_blank" class="eq-btn">Book This System →</a>
+    </div>
+  </div>
+
+  <div class="eq-card">
+    <div class="eq-img">
+      <img src="https://tropique.co/cdn/shop/files/IMG-2070.png?v=1708717810&width=1500" alt="RCF EVOX-12-SYSTEM">
+    </div>
+    <div class="eq-body">
+      <span class="eq-tag">Line Array System</span>
+      <div class="eq-name">RCF EVOX-12 SYSTEM</div>
+      <p class="eq-desc">Premium line array system delivering exceptional clarity and power across any venue. Ideal for larger events where coverage and sound quality are paramount.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfU7no8XDeUKD41x9ty1MTz6EXd02nxTzD7KwY7d7yQnFyQ7w/viewform?usp=sf_link" target="_blank" class="eq-btn">Book This System →</a>
+    </div>
+  </div>
+
+  <div class="eq-card">
+    <div class="eq-img">
+      <img src="https://tropique.co/cdn/shop/files/IMG-2072.png?v=1708718114&width=1500" alt="RCF NX 45-A">
+    </div>
+    <div class="eq-body">
+      <span class="eq-tag">Active Loudspeaker</span>
+      <div class="eq-name">RCF NX 45-A</div>
+      <p class="eq-desc">15" 2-way 1400W active loudspeaker with accurate phase and wide frequency response. Class-D amplifiers power a 15" neodymium woofer and 4" titanium compression driver. Frequency response of 45 Hz to 20 kHz with FirPHASE filters.</p>
+      <a href="https://docs.google.com/forms/d/1nAj5D4eWKMJUYcfDhhjSPp2clpD6b7pnH7YBXmVWiIo/edit" target="_blank" class="eq-btn">Book This System →</a>
+    </div>
+  </div>
+
+  <div class="eq-card">
+    <div class="eq-img">
+      <img src="https://tropique.co/cdn/shop/files/IMG-2073.png?v=1708718234&width=1500" alt="RCF ART 915-A">
+    </div>
+    <div class="eq-body">
+      <span class="eq-tag">Active Loudspeaker</span>
+      <div class="eq-name">RCF ART 915-A</div>
+      <p class="eq-desc">Professional active loudspeaker delivering powerful, clear sound for any event. Built for reliability and performance in demanding live environments.</p>
+      <a href="https://docs.google.com/forms/d/1nAj5D4eWKMJUYcfDhhjSPp2clpD6b7pnH7YBXmVWiIo/edit" target="_blank" class="eq-btn">Book This System →</a>
+    </div>
+  </div>
+
+  <div class="eq-card">
+    <div class="eq-img">
+      <img src="https://tropique.co/cdn/shop/files/IMG-2074.png?v=1708718344&width=1500" alt="RCF ART-735A-MK4">
+    </div>
+    <div class="eq-body">
+      <span class="eq-tag">Active Loudspeaker</span>
+      <div class="eq-name">RCF ART-735A MK4</div>
+      <p class="eq-desc">The latest evolution of the ART series, delivering enhanced performance and reliability. Perfect for DJs, musicians, and audio engineers across clubs, venues, and live stage applications.</p>
+      <a href="https://docs.google.com/forms/d/1nAj5D4eWKMJUYcfDhhjSPp2clpD6b7pnH7YBXmVWiIo/edit" target="_blank" class="eq-btn">Book This System →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-title">NEED SOMETHING <span>CUSTOM?</span></div>
+  <p class="cta-sub">Have a specific setup in mind? Reach out and we'll put together the perfect package for your event.</p>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfU7no8XDeUKD41x9ty1MTz6EXd02nxTzD7KwY7d7yQnFyQ7w/viewform?usp=sf_link" target="_blank" class="cta-btn">Get In Touch →</a>
+</div>
+
+</body>
+</html>
