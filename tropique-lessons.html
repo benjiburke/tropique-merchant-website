@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DJ Lessons & Studio Time — Tropiqué</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0A0A0A;
+  --off: #111111;
+  --card: #161616;
+  --border: #2A2A2A;
+  --gold: #C9A84C;
+  --white: #F0EDE8;
+  --muted: #6A6A6A;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 24px 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: Impact, Arial, sans-serif;
+  font-size: clamp(52px, 12vw, 100px);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.hero-title span { color: var(--gold); }
+
+.hero-sub {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.9;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tab {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tab:hover { color: var(--white); }
+.tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* PANELS */
+.panels {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* INFO CARD */
+.info-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 40px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-label {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.info-value {
+  font-family: Impact, Arial, sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+
+.info-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* WHAT TO EXPECT */
+.section-title {
+  font-family: Impact, Arial, sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.section-title span { color: var(--gold); }
+
+.bullets {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.bullets li {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.bullets li::before {
+  content: '—';
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* CALENDLY */
+.calendly-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.calendly-header {
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendly-header-title {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.calendly-header-price {
+  font-family: Impact, Arial, sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+
+.calendly-inline-widget {
+  min-width: 100%;
+  height: 700px;
+}
+
+/* DIVIDER */
+.gold-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 32px;
+}
+
+@media (max-width: 640px) {
+  .info-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 24px;
+  }
+  .hero { padding: 60px 24px 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Tropiqué x Robidio</div>
+  <div class="hero-title">DJ <span>LESSONS</span><br>& STUDIO</div>
+  <p class="hero-sub">Learn from a professional DJ with years of experience on the decks. Whether you're just starting out or looking to sharpen your skills — we got you.</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('lessons', this)">🎧 DJ Lessons</button>
+  <button class="tab" onclick="switchTab('studio', this)">🎛️ Studio Time</button>
+</div>
+
+<!-- PANELS -->
+<div class="panels">
+
+  <!-- DJ LESSONS PANEL -->
+  <div class="panel active" id="panel-lessons">
+    <div class="info-card">
+      <div class="info-item">
+        <span class="info-label">Rate</span>
+        <span class="info-value">$60</span>
+        <span class="info-desc">Per hour session</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Duration</span>
+        <span class="info-value">1 HR</span>
+        <span class="info-desc">One-on-one with Robidio</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Level</span>
+        <span class="info-value">ALL</span>
+        <span class="info-desc">Beginner to intermediate</span>
+      </div>
+    </div>
+
+    <div class="gold-divider"></div>
+    <div class="section-title">WHAT YOU'LL <span>LEARN</span></div>
+    <ul class="bullets">
+      <li>DJ fundamentals — beatmatching, tempo, phrasing</li>
+      <li>Equipment basics — mixers, CDJs, controllers</li>
+      <li>Music selection and reading the crowd</li>
+      <li>Transitions, EQ, and effects</li>
+      <li>Building your first set from scratch</li>
+    </ul>
+
+    <div class="calendly-wrap">
+      <div class="calendly-header">
+        <span class="calendly-header-title">Book Your Session</span>
+        <span class="calendly-header-price">$60 / hr</span>
+      </div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/tropique-us/30min?hide_gdpr_banner=1&background_color=161616&text_color=F0EDE8&primary_color=C9A84C"></div>
+    </div>
+  </div>
+
+  <!-- STUDIO TIME PANEL -->
+  <div class="panel" id="panel-studio">
+    <div class="info-card">
+      <div class="info-item">
+        <span class="info-label">Rate</span>
+        <span class="info-value">$60</span>
+        <span class="info-desc">Per hour session</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Duration</span>
+        <span class="info-value">1 HR</span>
+        <span class="info-desc">Flexible blocks available</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Level</span>
+        <span class="info-value">PRO</span>
+        <span class="info-desc">Experienced DJs only</span>
+      </div>
+    </div>
+
+    <div class="gold-divider"></div>
+    <div class="section-title">STUDIO <span>INCLUDES</span></div>
+    <ul class="bullets">
+      <li>Access to professional grade equipment</li>
+      <li>CDJs, mixer, monitors — full setup</li>
+      <li>Practice your sets in a real environment</li>
+      <li>Record your mixes</li>
+      <li>Optional feedback from Robidio</li>
+    </ul>
+
+    <div class="calendly-wrap">
+      <div class="calendly-header">
+        <span class="calendly-header-title">Book Studio Time</span>
+        <span class="calendly-header-price">$60 / hr</span>
+      </div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/tropique-us/lesson-clone?hide_gdpr_banner=1&background_color=161616&text_color=F0EDE8&primary_color=C9A84C"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
+}
+</script>
+
+</body>
+</html>
